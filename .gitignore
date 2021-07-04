@@ -1,5 +1,4 @@
 .idea/
 .metadata/
 .vscode/
-/*.class
-src/
+*.class
