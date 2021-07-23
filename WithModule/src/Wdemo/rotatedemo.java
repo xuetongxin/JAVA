@@ -17,7 +17,7 @@ public class rotatedemo extends Application{
 		// TODO 自动生成的方法存根
 		StackPane pane=new StackPane();
 		Button ok=new Button("OK");
-		ok.setStyle("-fx-border-color:blue");
+		//ok.setStyle("-fx-border-color:blue");
 		pane.getChildren().add(ok);
 		
 		pane.setRotate(45);
