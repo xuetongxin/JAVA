@@ -1,2 +1,0 @@
-Ordinal		Name			Age			Sex
-1			zhangsan		123			null
