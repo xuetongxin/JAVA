@@ -96,8 +96,7 @@ public class test {
 				stmt.setInt(4, bronze[i].getcount());
 				stmt.executeUpdate();
 			}
-		}
-		/*
+		
 		 * System.out.println("请输入查询条件:"); int medalcount = 0; String playername = null;
 		 * String sport = null; String country = null;
 		 * 
@@ -115,7 +114,7 @@ public class test {
 		 * if(BronzeCount==0) { System.out.print("没有一枚铜牌!"); }else
 		 * System.out.println("铜牌查询:"); SelectMedals.select(bronze, medalcount,
 		 * playername, sport, country); }
-		 */
+		 
 	}
 
 }
