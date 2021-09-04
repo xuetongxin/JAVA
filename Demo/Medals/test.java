@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.sql.Struct;
+
 import java.util.Scanner;
 
 import Medals.SelectMedals;
@@ -15,27 +15,30 @@ import SelectMedals.GoldMedals;
 import SelectMedals.SilverMedals;
 
 public class test {
+	//@SuppressWarnings({ "resource", "null" })
 	public static void main(String[] args) throws SQLException, ClassNotFoundException {
 		// TODO 自动生成的方法存根
 		Scanner sc = new Scanner(System.in);
 
-		// stare the databases
+		// start the databases
 
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/xsl", "root", "xsl203457");
-		PreparedStatement stmt = null;
+		PreparedStatement ps = null;
+		//Statement stmt=con.createStatement();
+		//ResultSet rs=null;
+		//rs = stmt.executeQuery("select * from medalsmysql");
+		
 		System.out.println("are you want to update databases or insert new databases");
 		System.out.println("you can input 'updata' or 'insert'");
 		String choice = sc.nextLine();
 		if (choice.matches("updade")) {
-			stmt = con.prepareStatement(
+			ps = con.prepareStatement(
 					"insert into medalsmysql (goldmedals,silvermedals,bronzemedals) values(?,?,?) where country='?");
 		}else {
-			stmt = con.prepareStatement(
+			ps = con.prepareStatement(
 					"insert into medalsmysql (country,goldmedals,silvermedals,bronzemedals) values (?,?,?,?)");
 		}
-
-		ResultSet rs = null;
 
 		// input the number of medals
 		System.out.print("请输入你准备录入金牌个数:");
@@ -46,7 +49,7 @@ public class test {
 		}
 		for (int i = 0; i < gold.length; i++) {
 			gold[i] = new GoldMedals();
-			gold[i].setcount(sc.nextInt());
+			gold[i].setcount((sc.nextInt()));
 			gold[i].setpalyername(sc.next());
 			gold[i].setsport(sc.next());
 			gold[i].setcountry(sc.next());
@@ -81,20 +84,20 @@ public class test {
 		}
 		if(choice.matches("uodate")) {
 			for (int i = 0; i < GoldCount; i++) {
-				stmt.setString(4, gold[i].getcountry());
-				stmt.setInt(1, gold[i].getcount());
-				stmt.setInt(2, silver[i].getcount());
-				stmt.setInt(3, bronze[i].getcount());
-				stmt.executeUpdate();
+				ps.setString(4, gold[i].getcountry());
+				ps.setInt(1, gold[i].getcount());
+				ps.setInt(2, silver[i].getcount());
+				ps.setInt(3, bronze[i].getcount());
+				ps.executeUpdate();
 			}
 		}
 		else {
 			for (int i = 0; i < GoldCount; i++) {
-				stmt.setString(1, gold[i].getcountry());
-				stmt.setInt(2, gold[i].getcount());
-				stmt.setInt(3, silver[i].getcount());
-				stmt.setInt(4, bronze[i].getcount());
-				stmt.executeUpdate();
+				ps.setString(1, gold[i].getcountry());
+				ps.setInt(2, gold[i].getcount());
+				ps.setInt(3, silver[i].getcount());
+				ps.setInt(4, bronze[i].getcount());
+				ps.executeUpdate();
 			}
 		}
 		/*
@@ -116,6 +119,8 @@ public class test {
 		 * System.out.println("铜牌查询:"); SelectMedals.select(bronze, medalcount,
 		 * playername, sport, country); }
 		 */
+		
+		
 	}
 
 }
