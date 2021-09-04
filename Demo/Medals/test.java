@@ -15,7 +15,7 @@ import SelectMedals.GoldMedals;
 import SelectMedals.SilverMedals;
 
 public class test {
-	//@SuppressWarnings({ "resource", "null" })
+	// @SuppressWarnings({ "resource", "null" })
 	public static void main(String[] args) throws SQLException, ClassNotFoundException {
 		// TODO 自动生成的方法存根
 		Scanner sc = new Scanner(System.in);
@@ -99,28 +99,30 @@ public class test {
 				ps.setInt(4, bronze[i].getcount());
 				ps.executeUpdate();
 			}
-		}
 		/*
-		 * System.out.println("请输入查询条件:"); int medalcount = 0; String playername = null;
-		 * String sport = null; String country = null;
-		 * 
-		 * System.out.print("medalscount:"); medalcount = sc.nextInt();
-		 * System.out.print("playername:"); playername = sc.next();
-		 * System.out.print("sport:"); sport = sc.next(); System.out.print("country:");
-		 * country = sc.next();
-		 * System.out.println("what kinds of medal do you want to know ?"); String
-		 * choice = sc.next(); if (choice.matches("gold")) { if(GoldCount==0) {
-		 * System.out.print("没有一枚金牌!"); }else System.out.println("金牌查询:");
-		 * SelectMedals.select(gold, medalcount, playername, sport, country); } else if
-		 * (choice.matches("silver")) { if(SilverCount==0) {
-		 * System.out.print("没有一枚银牌!"); }else System.out.println("银牌查询:");
-		 * SelectMedals.select(silver, medalcount, playername, sport, country); } else {
-		 * if(BronzeCount==0) { System.out.print("没有一枚铜牌!"); }else
-		 * System.out.println("铜牌查询:"); SelectMedals.select(bronze, medalcount,
-		 * playername, sport, country); }
-		 */
+			 * System.out.println("请输入查询条件:"); int medalcount = 0; String playername = null;
+			 * String sport = null; String country = null;
+			 * 
+			 * System.out.print("medalscount:"); medalcount = sc.nextInt();
+			 * System.out.print("playername:"); playername = sc.next();
+			 * System.out.print("sport:"); sport = sc.next(); System.out.print("country:");
+			 * country = sc.next();
+			 * System.out.println("what kinds of medal do you want to know ?"); String
+			 * choice = sc.next(); if (choice.matches("gold")) { if(GoldCount==0) {
+			 * System.out.print("没有一枚金牌!"); }else System.out.println("金牌查询:");
+			 * SelectMedals.select(gold, medalcount, playername, sport, country); } else if
+			 * (choice.matches("silver")) { if(SilverCount==0) {
+			 * System.out.print("没有一枚银牌!"); }else System.out.println("银牌查询:");
+			 * SelectMedals.select(silver, medalcount, playername, sport, country); } else {
+			 * if(BronzeCount==0) { System.out.print("没有一枚铜牌!"); }else
+			 * System.out.println("铜牌查询:"); SelectMedals.select(bronze, medalcount,
+			 * playername, sport, country); }
+		*/
+		 
 		
 		
-	}
 
+		 
+	}
+	}
 }
