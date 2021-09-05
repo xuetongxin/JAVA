@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="Cource Design/src"/>
+	<classpathentry kind="src" path="Demo"/>
+	<classpathentry kind="src" path="Email/src"/>
+	<classpathentry kind="src" path="gradle/src/main/java"/>
+	<classpathentry kind="src" path="gradle/src/test/java"/>
+	<classpathentry kind="src" path="IO/src"/>
+	<classpathentry kind="src" path="javafx-archetype-fxml/src/main/java"/>
+	<classpathentry kind="src" path="javafx/src"/>
+	<classpathentry kind="src" path="job/src"/>
+	<classpathentry kind="src" path="MySQL/src"/>
+	<classpathentry excluding="NetConnect/Net/|NetConnect/" kind="src" path="src"/>
+	<classpathentry excluding="Net/" kind="src" path="src/NetConnect"/>
+	<classpathentry kind="src" path="src/NetConnect/Net"/>
+	<classpathentry kind="src" path="ｗｅｂ/src"/>
+	<classpathentry kind="src" path="WebConnect/src"/>
+	<classpathentry kind="src" path="WithModule/src"/>
+	<classpathentry kind="lib" path="gradle/gradle/wrapper/gradle-wrapper.jar"/>
+	<classpathentry kind="output" path="Email/bin"/>
+</classpath>

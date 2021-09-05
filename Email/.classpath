@@ -7,5 +7,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Emailjar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/java _email"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
