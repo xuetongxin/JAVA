@@ -30,11 +30,11 @@ public class test {
 		//rs = stmt.executeQuery("select * from medalsmysql");
 		
 		System.out.println("are you want to update databases or insert new databases");
-		System.out.println("you can input 'updata' or 'insert'");
+		System.out.println("you can input 'update' or 'insert'");
 		String choice = sc.nextLine();
-		if (choice.matches("updade")) {
+		if (choice.matches("update")) {
 			ps = con.prepareStatement(
-					"insert into medalsmysql (goldmedals,silvermedals,bronzemedals) values(?,?,?) where country='?");
+					"insert into medalsmysql (goldmedals,silvermedals,bronzemedals) values(?,?,?) where country='?'");
 		}else {
 			ps = con.prepareStatement(
 					"insert into medalsmysql (country,goldmedals,silvermedals,bronzemedals) values (?,?,?,?)");
@@ -82,7 +82,9 @@ public class test {
 			bronze[i].setsport(sc.next());
 			bronze[i].setcountry(sc.next());
 		}
-		if(choice.matches("uodate")) {
+		
+		
+		if(choice.matches("update")) {
 			for (int i = 0; i < GoldCount; i++) {
 				ps.setString(4, gold[i].getcountry());
 				ps.setInt(1, gold[i].getcount());
