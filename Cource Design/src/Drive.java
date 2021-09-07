@@ -10,9 +10,12 @@ public class Drive {
 	Student student=new Student();
 	PreparedStatement ps = null;
 	Connection con = null;
-
+	
 	void input_drive() {
 		try {
+			
+			
+			System.out.print(student.GetName());
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/xsl", "root", "xsl203457");
 			ps = con.prepareStatement("insert into cource (id,name,age,grade) values (?,?,?,?)");
@@ -20,6 +23,8 @@ public class Drive {
 			ps.setString(2, student.GetName());
 			ps.setInt(3, student.GetAge());
 			ps.setString(4, student.GetGrade());
+			int i=ps.executeUpdate();
+			System.out.println(i);
 		} catch (Exception ex) {
 			System.out.println(ex);
 		}
@@ -47,15 +52,16 @@ public class Drive {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/xsl", "root", "xsl203457");
-			ps = con.prepareStatement("update cource set name='?',age=?,grade='?' where id=?");
+			ps = con.prepareStatement("update cource set name=?,age=?,grade=? where id=?");
 			
 			ps.setString(1, student.GetName());
 			ps.setInt(2, student.GetAge());
 			ps.setString(3, student.GetGrade());
 			ps.setDouble(4, student.GetId());
-			
+			ps.executeUpdate();
 		} catch (Exception ex) {
 			System.out.println(ex);
 		}
 	}
+	
 }

@@ -3,13 +3,9 @@ package Medals;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-
 import java.util.Scanner;
 
-import Medals.SelectMedals;
 import SelectMedals.BronzeMedals;
 import SelectMedals.GoldMedals;
 import SelectMedals.SilverMedals;
@@ -25,17 +21,13 @@ public class test {
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/xsl", "root", "xsl203457");
 		PreparedStatement ps = null;
-		//Statement stmt=con.createStatement();
-		//ResultSet rs=null;
-		//rs = stmt.executeQuery("select * from medalsmysql");
-		
+
 		System.out.println("are you want to update databases or insert new databases");
 		System.out.println("you can input 'update' or 'insert'");
 		String choice = sc.nextLine();
 		if (choice.matches("update")) {
-			ps = con.prepareStatement(
-					"insert into medalsmysql (goldmedals,silvermedals,bronzemedals) values(?,?,?) where country='?'");
-		}else {
+			ps = con.prepareStatement("update cource set golemedals=?,silvermedals=?,bronzemedals=? where country=?'");
+		} else {
 			ps = con.prepareStatement(
 					"insert into medalsmysql (country,goldmedals,silvermedals,bronzemedals) values (?,?,?,?)");
 		}
@@ -82,9 +74,8 @@ public class test {
 			bronze[i].setsport(sc.next());
 			bronze[i].setcountry(sc.next());
 		}
-		
-		
-		if(choice.matches("update")) {
+
+		if (choice.matches("update")) {
 			for (int i = 0; i < GoldCount; i++) {
 				ps.setString(4, gold[i].getcountry());
 				ps.setInt(1, gold[i].getcount());
@@ -92,8 +83,7 @@ public class test {
 				ps.setInt(3, bronze[i].getcount());
 				ps.executeUpdate();
 			}
-		}
-		else {
+		} else {
 			for (int i = 0; i < GoldCount; i++) {
 				ps.setString(1, gold[i].getcountry());
 				ps.setInt(2, gold[i].getcount());
@@ -101,7 +91,7 @@ public class test {
 				ps.setInt(4, bronze[i].getcount());
 				ps.executeUpdate();
 			}
-		/*
+			/*
 			 * System.out.println("请输入查询条件:"); int medalcount = 0; String playername = null;
 			 * String sport = null; String country = null;
 			 * 
@@ -119,12 +109,8 @@ public class test {
 			 * if(BronzeCount==0) { System.out.print("没有一枚铜牌!"); }else
 			 * System.out.println("铜牌查询:"); SelectMedals.select(bronze, medalcount,
 			 * playername, sport, country); }
-		*/
-		 
-		
-		
+			 */
 
-		 
-	}
+		}
 	}
 }
