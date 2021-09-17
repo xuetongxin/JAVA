@@ -34,14 +34,12 @@ public class c extends Application {
 	private HBox getHBox() {
 		HBox hbox = new HBox(9);
 		hbox.setPadding(new Insets(11, 11, 11, 11));
-		hbox.setStyle("-fx-background-color: gold");
+		//hbox.setStyle("-fx-background-color: gold");
 		hbox.getChildren().add(new Button("Computer"));
 		hbox.getChildren().add(new Button("Chemistry"));
-		hbox.getChildren().add(new ImageView(
-				new Image("file:D:\\\\eclipse-workspace\\\\javafx\\\\bin\\\\Cource_Design\\\\image\\\\a.jpg")));
+		hbox.getChildren().add(new ImageView(new Image("file:D:\\eclipse-workspace\\javafx\\bin\\Cource_Design\\image\\a.jif")));
 		return hbox;
 	}
-
 	private Node getVBox() {
 		// TODO 自动生成的方法存根
 		return null;

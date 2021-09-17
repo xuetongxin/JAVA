@@ -22,7 +22,8 @@ public class d extends Application {
 	@Override
 	public void start(Stage stage) throws Exception {
 		// TODO 自动生成的方法存根
-		StackPane pane = new StackPane();
+		//StackPane pane = new StackPane();
+		Pane pane=new Pane();
 		Pane pane1 = new Pane();
 
 		pane.setPadding(new Insets(11, 110, 11, 110));
@@ -30,11 +31,11 @@ public class d extends Application {
 
 		pane1.setPadding(new Insets(11, 11, 11, 11));
 
-		Image image = new Image("file:D:\\eclipse-workspace\\javafx\\bin\\Cource_Design\\image\\a.jpg");
+		Image image = new Image("file:D:\\eclipse-workspace\\javafx\\bin\\Cource_Design\\image\\1619701427059.jpeg");
 		ImageView imageview = new ImageView(image);
 		imageview.setFitHeight(1080);
 		imageview.setFitWidth(1480);
-
+/*
 		Label name = new Label("name");
 		Label passwd = new Label("passwd");
 		Text text = new Text("hello");
@@ -43,17 +44,15 @@ public class d extends Application {
 		TextField txfd2 = new TextField();
 
 		Text text1 = new Text(100, 100, "hello java");
-
 		text1.setFont(Font.font("Courier", FontWeight.EXTRA_BOLD, FontPosture.ITALIC, 99));
-
 		text1.setFill(Color.RED);
-		// text1.setUnderline(true);
-		// text1.setStrikethrough(true);
+		text1.setUnderline(true);
+		text1.setStrikethrough(true);
 
 		pane1.getChildren().add(text1);
-
-		// pane.getChildren().addAll(imageview);
-		pane.getChildren().addAll(txfd1, passwd);
+*/
+		pane1.getChildren().addAll(imageview);
+		//pane.getChildren().addAll(txfd1, passwd);
 		Scene scene = new Scene(pane1, 200, 200);
 		stage.setScene(scene);
 		stage.setTitle("stackpane");
