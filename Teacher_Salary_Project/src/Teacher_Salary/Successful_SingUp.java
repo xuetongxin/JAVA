@@ -30,7 +30,7 @@ public class Successful_SingUp extends Application{
 		Scene scene=new Scene(borderpane,400,400);
 		stage.setScene(scene);
 		stage.setTitle("");
-		stage.show();
+		stage.show(); 
 		
 		btok.setOnAction(e->{
 			try {

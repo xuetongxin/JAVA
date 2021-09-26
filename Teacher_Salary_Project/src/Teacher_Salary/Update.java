@@ -102,7 +102,7 @@ public class Update extends Application {
 
 		Scene scene = new Scene(gridpane, 400, 400);
 		stage.setScene(scene);
-		stage.setTitle("Select");
+		stage.setTitle("Update");
 		stage.show();
 	}
 

@@ -1,59 +1,57 @@
 package Teacher_Salary;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-
 import javafx.application.Application;
-import javafx.geometry.Pos;
+import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.GridPane;
+import javafx.scene.control.Button;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
-public class a {
+public class a extends Application implements EventHandler{
 
-	public static void main(String[] args) throws SQLException {
-		Statement stmt1 = null;
-		Statement stmt2 = null;
-		ResultSet rs1 = null;
-		ResultSet rs2 = null;
-		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
-			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/xsl", "root", "xsl203457");
-			stmt1 = con.createStatement();
-			stmt2 = con.createStatement();
-			rs1 = stmt1.executeQuery("select account from passwd_date");
-			rs2 = stmt2.executeQuery("select passwd from passwd_date");
-			rs2.last();
-			
-		} catch (Exception ex) {
-			ex.getStackTrace();
-		} finally {
-			
-			while (rs1.next()) {
-				
-				if (rs1.getString(1).matches("2034576972")) {
-					System.out.print(true);
-					
-					while(rs2.next()) {
-						if(rs2.getString(1).matches("xsl203457")) {
-							System.out.print(false);
-						}
-					}
-
-				}
-			}
-			
-			
-		}
+	public static void main(String[] args) {
+		// TODO 自动生成的方法存根
+		launch(args);
 	}
+	Button bt1;
+	Button bt2;
+	@Override
+	public void start(Stage stage) throws Exception {
+		// TODO 自动生成的方法存根
+		Pane pane=new HBox();
+		
+		bt1 = new Button("b");
+		bt2=new Button("c");
+		
+		bt1.setOnAction(this);
+		bt2.setOnAction(this);
+		
+		pane.getChildren().addAll(bt1,bt2);
+		Scene scene=new Scene(pane);
+		stage.setScene(scene);
+		stage.setTitle("a");
+		stage.show();
+		
+	
+		
+		
+	}
+	@Override
+	public void handle(Event event) {
+		// TODO 自动生成的方法存根
+		if(event.getSource()==bt1) {
+			System.out.print("hello");
+			Stage stage=new Stage();
+			
+			stage.setTitle("b");
+			stage.showAndWait();
+		}	
+		else
+			System.out.print("kkk");
+	}
+	
+	
 }

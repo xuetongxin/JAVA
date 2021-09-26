@@ -67,7 +67,7 @@ public class Choice extends Application {
 		box.getChildren().addAll(bt1, bt2, bt3, bt4);
 		borderpane.setCenter(gridpane);
 		borderpane.setBottom(box);
-		Scene scene = new Scene(borderpane, 1540, 810);
+		Scene scene = new Scene(borderpane, 400, 410);
 		stage.setScene(scene);
 		stage.setTitle("choice");
 		stage.show();

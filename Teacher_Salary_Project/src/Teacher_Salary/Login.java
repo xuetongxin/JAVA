@@ -33,7 +33,7 @@ public class Login extends Application {
 	Choice choice = new Choice();
 	private StackPane stackpane = new StackPane();
 	private ImageView imageview = new ImageView(
-			new Image("file:D:\\eclipse-workspace\\Teacher_Salary_Project\\bin\\Teacher_Salary\\image\\R-C.jpg"));
+			new Image("file:D:\\eclipse-workspace\\Teacher_Salary_Project\\bin\\Teacher_Salary\\image\\下载.png"));
 	private HBox hbox = new HBox(10);
 	private GridPane gridpane = new GridPane();
 	private Button login_bt = new Button("Login"); // 设置登录按钮
@@ -89,19 +89,13 @@ public class Login extends Application {
 
 							if (rs2.getString(1).matches(txfd2.getText())) {
 
-								try {
-
-									choice.start(stage);
-								} catch (Exception e1) {
-
-									e1.printStackTrace();
-								}
+								choice.start(stage);
 
 							}
 
 						}
 					} else {
-						
+
 					}
 
 				}
@@ -176,7 +170,7 @@ public class Login extends Application {
 			}
 		};
 		txfd2.setPromptText("8~20数字、字母 能存在符号");
-		txfd2.setPrefColumnCount(15);
+		txfd2.setPrefColumnCount(13);
 	}
 
 }

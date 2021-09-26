@@ -24,14 +24,15 @@ class Input extends Application {
 		Button btreturn = new Button("Return");
 		Button btreset = new Button("Reset");
 		GridPane gridpane = new GridPane();
-		gridpane.setAlignment(Pos.CENTER);
-		gridpane.setHgap(5);
-		gridpane.setVgap(5);
+
 		TextField txfd1 = new TextField();
 		TextField txfd2 = new TextField();
 		TextField txfd3 = new TextField();
 		TextField txfd4 = new TextField();
 
+		gridpane.setHgap(5);
+		gridpane.setVgap(5);
+		gridpane.setAlignment(Pos.CENTER);
 		gridpane.add(new Label("id:"), 0, 0);
 		gridpane.add(txfd1, 1, 0);
 		gridpane.add(new Label("name:"), 0, 1);
