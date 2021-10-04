@@ -11,7 +11,8 @@ class conncet{
 
         ResultSet rs=stmt.executeQuery("select * from employee");
         while(rs.next()){
-                System.out.println(rs.getInt(1));
+                System.out.print(rs.getInt(1));
+                System.out.println(rs.getString(2));
         }
         con.close();
         }
