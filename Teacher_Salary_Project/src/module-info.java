@@ -4,6 +4,6 @@ module Teacher_Salary_Project {
 	requires javafx.graphics;
 	
 	
-	opens Teacher_Salary to javafx.graphics, javafx.fxml;
+	opens Teacher_Salary to javafx.fxml;
 	exports Teacher_Salary;
 }
