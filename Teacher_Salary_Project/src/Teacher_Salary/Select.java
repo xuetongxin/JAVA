@@ -1,92 +1,137 @@
 package Teacher_Salary;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-
 import javafx.application.Application;
-import javafx.geometry.Pos;
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
-class Select extends Application {
-	Select() {
-	}
-	Pane pane = new Pane();
-	GridPane  gridpane=new GridPane();
-	BorderPane borderpane=new BorderPane();
-	Button btokid =new Button("OK");
-	Button btokname=new Button("OK");
-	Button btreturn=new Button("return");
-	@Override
-	public void start(Stage stage) throws Exception {
-		// TODO 自动生成的方法存根
-		
-		gridpane.setHgap(5);
-		gridpane.setVgap(5);
-		gridpane.setAlignment(Pos.CENTER);	
-		gridpane.add(new Label("id:"), 0, 0);
-		gridpane.add(new TextField(), 1, 0);
-		gridpane.add(btokid, 2, 0);
-		gridpane.add(new Label("name"), 0, 1);
-		gridpane.add(new TextField(), 1, 1);
-		gridpane.add(btokname, 2, 1);
-		borderpane.setCenter(gridpane);
-		btreturn.setAlignment(Pos.BOTTOM_CENTER);
-		borderpane.setBottom(btreturn);
-		
-		btreturn.setOnAction(e->{
-			Choice choice=new Choice();
-			try {
-				choice.start(stage);
-			} catch (Exception e1) {
-				// TODO 自动生成的 catch 块
-				e1.printStackTrace();
-			}
-		});
-		
-		
-		Id_Select(stage);
-		
-		
- 		Scene scene = new Scene(borderpane, 400, 400);
-		stage.setScene(scene);
-		stage.setTitle("Select");
-		stage.show();
-	}
-	
-	void Id_Select(Stage stage) throws ClassNotFoundException, SQLException {
-		Class.forName("com.mysql.cj.jdbc.Driver");
-		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/xsl", "root", "xsl203457");
-	//	Parperment ps=con.createStatement("select * from teacher_salary where id= ?");
-		
-		btokid.setOnAction(e->{
-			IdSelect idselect=new IdSelect();
-			try {
-				idselect.start(stage);
-			} catch (Exception e1) {
-				// TODO 自动生成的 catch 块
-				e1.printStackTrace();
-			}
-		});
-	}
-	
-	void Name_Select(Stage stage) {
-		btokid.setOnAction(e->{
-			IdSelect idselect=new IdSelect();
-			try {
-				idselect.start(stage);
-			} catch (Exception e1) {
-				// TODO 自动生成的 catch 块
-				e1.printStackTrace();
-			}
-		});
-	}
-	
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
+public class Select extends Application {
+    Select() {
+    }
+
+    TableView<Teacher> table = new TableView<>();
+    ObservableList<Teacher> data = FXCollections.observableArrayList();
+
+    @SuppressWarnings({"rawtypes", "unchecked"})
+    @Override
+    public void start(Stage stage) throws Exception {
+
+        TableColumn Id_Column = new TableColumn("ID");
+        Id_Column.setMinWidth(100);
+        Id_Column.setCellValueFactory(new PropertyValueFactory<>("id"));
+
+        TableColumn Name_Column = new TableColumn("NAME");
+        Name_Column.setMinWidth(100);
+        Name_Column.setCellValueFactory(new PropertyValueFactory<>("name"));
+
+        TableColumn Position_Column = new TableColumn("Position");
+        Position_Column.setMinWidth(100);
+        Position_Column.setCellValueFactory(new PropertyValueFactory<>("position"));
+
+        TableColumn Salary_Column = new TableColumn("Salary");
+        Salary_Column.setMinWidth(100);
+        Salary_Column.setCellValueFactory(new PropertyValueFactory<>("salary"));
+
+        Mysql_Select();
+
+        table.getColumns().addAll(Id_Column, Name_Column, Position_Column, Salary_Column);
+
+        // 设置可编辑（列需要同时设置才有用）
+        table.setEditable(true);
+        // （很有用）宽度绑定窗口的宽度（意思窗口大小改变，它也跟着改变，自适应效果）
+        table.prefWidthProperty().bind(stage.widthProperty());
+
+        Scene scene = new Scene(table, 400, 300);
+        stage.setScene(scene);
+        stage.show();
+
+    }
+
+    public static class Teacher {
+
+        private final SimpleIntegerProperty id;
+        private final SimpleStringProperty name;
+        private final SimpleStringProperty position;
+        private final SimpleDoubleProperty salary;
+
+        Teacher() {
+            id = null;
+            name = null;
+            position = null;
+            salary = null;
+        }
+
+        Teacher(int ssPid, String sspName, String ssPosition, double sSalary) {
+            this.id = new SimpleIntegerProperty(ssPid);
+            this.name = new SimpleStringProperty(sspName);
+            this.position = new SimpleStringProperty(ssPosition);
+            this.salary = new SimpleDoubleProperty(sSalary);
+        }
+
+        public int getId() {
+            return id.get();
+        }
+
+        public void setId(int ssPid) {
+            id.set(ssPid);
+        }
+
+        public String getName() {
+            return name.get();
+        }
+
+        public void setName(String sspName) {
+            name.set(sspName);
+        }
+
+        public String getPosition() {
+            return position.get();
+        }
+
+        public void setPosition(String ssPosition) {
+            position.set(ssPosition);
+        }
+
+        public double getSalary() {
+            return salary.get();
+        }
+
+        public void setSalary(double sSalary) {
+            salary.set(sSalary);
+        }
+    }
+
+    private void Mysql_Select() {
+        Teacher teacher = new Teacher();
+        ResultSet rs1 = null;
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/xsl", "root", "xsl203457");
+            Statement stmt = con.createStatement();
+            rs1 = stmt.executeQuery("select * from teacher_salary");
+
+            while (rs1.next()) {
+                // 将数据存入数据列表
+                data.add(new Teacher(rs1.getInt(1), rs1.getString(2), rs1.getString(3), rs1.getDouble(4)));
+                table.setItems(data);
+            }
+
+        } catch (Exception ex) {
+            ex.getStackTrace();
+        }
+
+    }
+
 }
